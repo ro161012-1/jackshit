@@ -40,7 +40,7 @@ public class PvpBotEntity extends HostileEntity {
     public static final List<String> TECH_LIST = List.of(
         "beginner_windcharge", "beginner_shield", "beginner_elytra_boost",
         "pearl_catching", "elytra_macing", "windcharge_cancel", "lunge_swapping",
-        "stun_slamming", "sword_attribute_swap", "backstabbing", "breach_swapping", "pearl_grapple", "spear_double_pop", "rod_grapple",
+        "stun_slamming", "sword_attribute_swap", "backstabbing", "breach_swapping", "pearl_grapple", "spear_double_pop",
         "elytra_stun_slam", "diagonal_pearl_catch", "shield_draining", "mace_dtap", "elytra_preservation",
         "rocket_macing", "wall_pearling"
     );
@@ -87,7 +87,7 @@ public class PvpBotEntity extends HostileEntity {
         builder.add(BOT_DIFFICULTY, BotConfig.DEFAULT_DIFFICULTY);
         builder.add(BOT_BEHAVIOR, BotConfig.DEFAULT_BEHAVIOR);
         builder.add(TARGET_PLAYER_NAME, "");
-        builder.add(TECH_MASK, 0xFFFFFF); // All 21 techniques enabled by default
+        builder.add(TECH_MASK, 0xFFFFF); // All 20 techniques enabled by default
     }
 
     @Override
@@ -127,7 +127,7 @@ public class PvpBotEntity extends HostileEntity {
         ItemStack windCharges = new ItemStack(Items.WIND_CHARGE, 64);
         hotbarItems[5] = windCharges;
 
-        // Slot 6: Ender Pearls
+        // Slot 6: Ender Pearls (For Ender Pearl Grapple, Pearl Catching, etc.)
         hotbarItems[6] = new ItemStack(Items.ENDER_PEARL, 16);
 
         // Slot 7: Elytra (for hotbar chestplate swapping / dive bombing)
@@ -358,7 +358,7 @@ public class PvpBotEntity extends HostileEntity {
 
     public void setTechEnabled(String techName, boolean enabled) {
         if (techName.equalsIgnoreCase("all")) {
-            this.dataTracker.set(TECH_MASK, enabled ? 0xFFFFFF : 0);
+            this.dataTracker.set(TECH_MASK, enabled ? 0xFFFFF : 0);
             return;
         }
         int index = TECH_LIST.indexOf(techName.toLowerCase());

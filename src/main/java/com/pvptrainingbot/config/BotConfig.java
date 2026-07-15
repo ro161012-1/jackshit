@@ -10,7 +10,7 @@ public class BotConfig {
 
     public static final int MAX_BREACH_LEVEL = 4; // Breach IV (Breach 4) is the maximum in 1.21
 
-    // List of all 21 techniques (20 from video transcript + Fishing Rod Grapple)
+    // Exactly 20 techniques from the video transcript (Ender Pearl Grapple included)
     public static final Set<String> ALL_TECHNIQUES = Set.of(
         // Beginner (3)
         "beginner_windcharge",
@@ -21,14 +21,13 @@ public class BotConfig {
         "elytra_macing",
         "windcharge_cancel",
         "lunge_swapping",
-        // Advanced (7)
+        // Advanced (6)
         "stun_slamming",
         "sword_attribute_swap",
         "backstabbing",
         "breach_swapping", // Uses Breach IV Mace
-        "pearl_grapple",   // Pearl Grapple / Far Pearl
+        "pearl_grapple",   // Ender Pearl Grapple / Far Pearl
         "spear_double_pop",
-        "rod_grapple",     // Fishing Rod Grapple
         // Master (5)
         "elytra_stun_slam",
         "diagonal_pearl_catch",

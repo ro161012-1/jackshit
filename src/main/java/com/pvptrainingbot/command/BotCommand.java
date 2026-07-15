@@ -99,12 +99,12 @@ public class BotCommand {
 
     private static int sendHelp(CommandContext<ServerCommandSource> ctx) {
         ServerCommandSource source = ctx.getSource();
-        source.sendFeedback(() -> Text.literal("§6=== PvP Training Bot Commands (Dual-Mace & Grapple Edition) ===§r\n" +
+        source.sendFeedback(() -> Text.literal("§6=== PvP Training Bot Commands (20 Transcript Tech Edition) ===§r\n" +
                 "§e/bot spawn <username> [mode] [difficulty] §7- Spawn bot mimicking <username>§r\n" +
                 "§e/bot mode <mace|axe_shield|crystal|sword> §7- Switch combat mode§r\n" +
                 "§e/bot difficulty <easy|medium|hard|god|insane> §7- Adjust reaction speed & CPS§r\n" +
-                "§e/bot tech <tech_name|all> <on|off|trigger> §7- Toggle/trigger any of the 21 techniques§r\n" +
-                "§e/bot listtech §7- List all 21 techniques (Pearl Grapple & Rod Grapple included)§r\n" +
+                "§e/bot tech <tech_name|all> <on|off|trigger> §7- Toggle/trigger any of the 20 transcript tech§r\n" +
+                "§e/bot listtech §7- List all 20 Mace PvP techniques from the transcript§r\n" +
                 "§e/bot gear <reset|mace_kit|custom> §7- Equip Dual-Mace Kit (Density+WB1 Aerial & Breach IV Ground)§r\n" +
                 "§e/bot behavior <aggressive|tactical|kiting|passive> §7- Set positioning strategy§r\n" +
                 "§e/bot status §7- View bot stats and active tech mask§r\n" +
@@ -114,10 +114,10 @@ public class BotCommand {
 
     private static int listAllTechniques(CommandContext<ServerCommandSource> ctx) {
         ServerCommandSource source = ctx.getSource();
-        source.sendFeedback(() -> Text.literal("§6=== All 21 Mace PvP Techniques (Grappling Included) ===§r\n" +
+        source.sendFeedback(() -> Text.literal("§6=== All 20 Transcript Mace PvP Techniques ===§r\n" +
                 "§a[Beginner]: §fbeginner_windcharge, beginner_shield, beginner_elytra_boost\n" +
                 "§e[Intermediate]: §fpearl_catching, elytra_macing, windcharge_cancel, lunge_swapping\n" +
-                "§c[Advanced]: §fstun_slamming, sword_attribute_swap, backstabbing, breach_swapping (§5Breach IV No WB§f), pearl_grapple (§dEnder Pearl Grapple§f), spear_double_pop, rod_grapple (§bFishing Rod Grapple§f)\n" +
+                "§c[Advanced]: §fstun_slamming, sword_attribute_swap, backstabbing, breach_swapping (§5Breach IV No WB§f), pearl_grapple (§dEnder Pearl Grapple§f), spear_double_pop\n" +
                 "§d[Master]: §felytra_stun_slam, diagonal_pearl_catch, shield_draining, mace_dtap, elytra_preservation\n" +
                 "§b[Bonus]: §frocket_macing, wall_pearling"), false);
         return 1;
@@ -142,7 +142,7 @@ public class BotCommand {
         }
 
         source.getWorld().spawnEntity(bot);
-        source.sendFeedback(() -> Text.literal("§a[PvP Bot] Spawned bot mimicking §b" + username + " §a(Mode: §e" + mode.toUpperCase() + "§a, Diff: §c" + difficulty.toUpperCase() + "§a, Dual-Mace & Grapple Kit equipped)"), true);
+        source.sendFeedback(() -> Text.literal("§a[PvP Bot] Spawned bot mimicking §b" + username + " §a(Mode: §e" + mode.toUpperCase() + "§a, Diff: §c" + difficulty.toUpperCase() + "§a, Dual-Mace Kit equipped)"), true);
         return 1;
     }
 
@@ -220,7 +220,7 @@ public class BotCommand {
         for (PvpBotEntity bot : bots) {
             bot.equipCompetitiveMaceKit();
         }
-        source.sendFeedback(() -> Text.literal("§a[PvP Bot] Equipped " + bots.size() + " bot(s) with Dual-Mace & Grapple Kit (§dAerial Density+WB1 §f& §5Ground Breach IV No-WB§a)."), true);
+        source.sendFeedback(() -> Text.literal("§a[PvP Bot] Equipped " + bots.size() + " bot(s) with Dual-Mace Kit (§dAerial Density+WB1 §f& §5Ground Breach IV No-WB§a)."), true);
         return 1;
     }
 
@@ -272,7 +272,7 @@ public class BotCommand {
             float hp = bot.getHealth();
             float maxHp = bot.getMaxHealth();
             source.sendFeedback(() -> Text.literal("§b--- PvP Bot (" + bot.getBotUsername() + ") ---§r\n" +
-                    "§7Mode: §e" + bot.getBotMode().toUpperCase() + " §7| Diff: §c" + bot.getBotDifficulty().toUpperCase() + " §7| Dual-Mace & Grapple Kit Active§r\n" +
+                    "§7Mode: §e" + bot.getBotMode().toUpperCase() + " §7| Diff: §c" + bot.getBotDifficulty().toUpperCase() + " §7| Dual-Mace Kit Active§r\n" +
                     "§7Health: §a" + String.format("%.1f", hp) + "/" + String.format("%.1f", maxHp) + " HP (" + String.format("%.1f", hp / 2.0F) + "/" + String.format("%.1f", maxHp / 2.0F) + " ❤) §7| Combos Landed: §6" + bot.getComboCounter() + "§r\n" +
                     "§7Active Drill: §d" + (bot.getActiveDrillTech().isEmpty() ? "None" : bot.getActiveDrillTech()) + " §7| Tech Mask: §b0x" + Integer.toHexString(bot.getTechMask()).toUpperCase()), false);
         }

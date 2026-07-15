@@ -80,7 +80,7 @@ public class MacePvpGoal extends Goal {
             case "passive" -> bot.getNavigation().stop();
         }
 
-        // --- Execute All 21 Techniques (Transcript + Fishing Rod Grapple) in Priority Sequence ---
+        // --- Execute All 20 Transcript Techniques in Priority Sequence (Ender Pearl Grappling ONLY) ---
         BeginnerShieldTech.tick(bot, target);
         ElytraPreservationTech.tick(bot, target);
         MaceDTapTech.tick(bot, target);
@@ -97,7 +97,6 @@ public class MacePvpGoal extends Goal {
         PearlCatchingTech.tick(bot, target);
         DiagonalPearlCatchTech.tick(bot, target);
         PearlGrappleTech.tick(bot, target);
-        FishingRodGrappleTech.tick(bot, target);
         WallPearlingTech.tick(bot, target);
         BeginnerElytraBoost.tick(bot, target);
         RocketMacingTech.tick(bot, target);
